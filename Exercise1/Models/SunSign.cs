@@ -8,139 +8,40 @@ namespace Exercise1.Models
 {
     public class SunSign : Person
     {
-        public String ZodiacSign
+        public string ZodiacSign
         {
             get
             {
                 switch ((int)DateOfBirth.Month)
                 {
                     case 1:
-                        if (DateOfBirth.Day <= 20)
-                        {
-                            return "Capricorn";
-                        }
-                        else
-                        {
-                            return "Aquarius";
-                        }
-                        break;
+                        return DateOfBirth.Day <= 20 ? "Capricorn" : "Aquarius";
                     case 2:
-                        if (DateOfBirth.Day <= 19)
-                        {
-                            return "Aquarius";
-                        }
-                        else
-                        {
-                            return "Pisces";
-                        }
-                        break;
+                        return DateOfBirth.Day <= 19 ? "Aquarius" : "Pisces";
                     case 3:
-                        if (DateOfBirth.Day <= 20)
-                        {
-                            return "Pisces";
-                        }
-                        else
-                        {
-                            return "Aries";
-                        }
-                        break;
+                        return DateOfBirth.Day <= 20 ? "Pisces" : "Aries";
                     case 4:
-                        if (DateOfBirth.Day <= 20)
-                        {
-                            return "Aries";
-                        }
-                        else
-                        {
-                            return "Taurus";
-                        }
-                        break;
+                        return DateOfBirth.Day <= 20 ? "Aries" : "Taurus";
                     case 5:
-                        if (DateOfBirth.Day <= 21)
-                        {
-                            return "Taurus";
-                        }
-                        else
-                        {
-                            return "Gemini";
-                        }
-                        break;
+                        return DateOfBirth.Day <= 21 ? "Taurus" : "Gemini";
                     case 6:
-                        if (DateOfBirth.Day <= 22)
-                        {
-                            return "Gemini";
-                        }
-                        else
-                        {
-                            return "Cancer";
-                        }
-                        break;
+                        return DateOfBirth.Day <= 22 ? "Gemini" : "Cancer";
                     case 7:
-                        if (DateOfBirth.Day <= 22)
-                        {
-                            return "Cancer";
-                        }
-                        else
-                        {
-                            return "Leo";
-                        }
-                        break;
+                        return DateOfBirth.Day <= 22 ? "Cancer" : "Leo";
                     case 8:
-                        if (DateOfBirth.Day <= 23)
-                        {
-                            return "Leo";
-                        }
-                        else
-                        {
-                            return "Virgo";
-                        }
-                        break;
+                        return DateOfBirth.Day <= 23 ? "Leo" : "Virgo";
                     case 9:
-                        if (DateOfBirth.Day <= 23)
-                        {
-                            return "Virgo";
-                        }
-                        else
-                        {
-                            return "Libra";
-                        }
-                        break;
+                        return DateOfBirth.Day <= 23 ? "Virgo" : "Libra";
                     case 10:
-                        if (DateOfBirth.Day <= 23)
-                        {
-                            return "Libra";
-                        }
-                        else
-                        {
-                            return "Scorpio";
-                        }
-                        break;
+                        return DateOfBirth.Day <= 23 ? "Libra" : "Scorpio";
                     case 11:
-                        if (DateOfBirth.Day <= 22)
-                        {
-                            return "Scorpio";
-                        }
-                        else
-                        {
-                            return "Sagittarius";
-                        }
-                        break;
+                        return DateOfBirth.Day <= 22 ? "Scorpio" : "Sagittarius";
                     case 12:
-                        if (DateOfBirth.Day <= 21)
-                        {
-                            return "Sagittarius";
-                        }
-                        else
-                        {
-                            return "Capricorn";
-                        }
-                        break;
-
+                        return DateOfBirth.Day <= 21 ? "Sagittarius" : "Capricorn";
                     default:
                         return "Your sun sign was not found! Please try again!";
-                        break;
                 }
             }
-
         }
     }
 }

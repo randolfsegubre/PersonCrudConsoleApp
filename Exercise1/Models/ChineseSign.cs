@@ -14,10 +14,10 @@ namespace Exercise1.Models
             get
             {
                 EastAsianLunisolarCalendar cc = new ChineseLunisolarCalendar();
-                int sexagenaryYear = cc.GetSexagenaryYear(DateOfBirth);
-                int terrestrialBranch = cc.GetTerrestrialBranch(sexagenaryYear);
+                var sexagenarianYear = cc.GetSexagenaryYear(DateOfBirth);
+                var terrestrialBranch = cc.GetTerrestrialBranch(sexagenarianYear);
 
-                string[] years = new string[] { "Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Goat", "Monkey", "Rooster", "Dog", "Pig" };
+                var years = new string[] { "Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Goat", "Monkey", "Rooster", "Dog", "Pig" };
 
                 return years[terrestrialBranch - 1];
             }

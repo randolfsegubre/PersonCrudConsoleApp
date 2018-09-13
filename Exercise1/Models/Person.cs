@@ -32,31 +32,15 @@ namespace Exercise1.Models
             DateOfBirth = _dateOfBirth;
         }
         public int Id { get; set; }
-        public String FirstName { get; set; }
-        public String LastName { get; set; }
-        public String Email { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
         public DateTime DateOfBirth { get; set; }
 
-        public String ScreenName1
-        {
-            get
-            {
-                return FirstName + "." + LastName + DateOfBirth.ToString("MMddyyyy") + "@yahoo.com";
-            }
-        }
-        public String ScreenName2
-        {
-            get
-            {
-                return FirstName.Substring(0, 1) + LastName + DateOfBirth.ToString("MMddyyyy") + "@yahoo.com";
-            }
-        }
-        public String ScreenName3
-        {
-            get
-            {
-                return FirstName + LastName.Substring(0, 1) + DateOfBirth.ToString("MMddyyyy") + "@yahoo.com";
-            }
-        }
+        public string ScreenName1 => FirstName + "." + LastName + DateOfBirth.ToString("MMddyyyy") + "@yahoo.com";
+
+        public string ScreenName2 => FirstName.Substring(0, 1) + LastName + DateOfBirth.ToString("MMddyyyy") + "@yahoo.com";
+
+        public string ScreenName3 => FirstName + LastName.Substring(0, 1) + DateOfBirth.ToString("MMddyyyy") + "@yahoo.com";
     }
 }

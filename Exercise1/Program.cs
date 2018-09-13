@@ -5,16 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
+using static System.String;
 
 namespace Exercise1
 {
     public class Program
     {
         List<Person> personList = new List<Person>();
-        Person _person;
-        static void Main(string[] args)
+        public Person _person;
+
+        private static void Main(string[] args)
         {
-            Program p = new Program();
+            var p = new Program();
             try
             {
                 p.Execute();
@@ -24,7 +26,7 @@ namespace Exercise1
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("1 -- Restart");
                 Console.WriteLine("2 -- Exit");
-                int input = Int32.Parse(Console.ReadLine());
+                var input = int.Parse(Console.ReadLine() ?? throw new InvalidOperationException());
                 if (input == 1) System.Diagnostics.Process.Start(System.AppDomain.CurrentDomain.FriendlyName);
                 Environment.Exit(0);
                 Console.ReadLine();
@@ -36,14 +38,12 @@ namespace Exercise1
         #region Program Execution
         private void Execute()
         {
-            int option = 0;
-
             while (true)
             {
                 Console.WriteLine("Select Option");
                 Console.WriteLine("1 --- Add");
                 Console.WriteLine("2 --- Search");
-                option = int.Parse(Console.ReadLine().ToString());
+                var option = int.Parse(Console.ReadLine()?.ToString() ?? throw new InvalidOperationException());
 
                 Console.WriteLine();
                 switch (option)
@@ -76,25 +76,23 @@ namespace Exercise1
                 Console.Write("Choose number for Email : ");
                  choice = (string)Console.ReadLine();
 
-                if (!String.IsNullOrEmpty(choice))
+                if (IsNullOrEmpty(choice)) continue;
+                switch (choice)
                 {
-                    switch (choice)
-                    {
-                        case "1":
-                            _person.Email = _person.ScreenName1;
-                            break;
-                        case "2":
-                            _person.Email = _person.ScreenName2;
-                            break;
-                        case "3":
-                            _person.Email = _person.ScreenName3;
-                            break;
-                        default:
-                            _person.Email = choice;
-                            break;
-                    }
+                    case "1":
+                        _person.Email = _person.ScreenName1;
+                        break;
+                    case "2":
+                        _person.Email = _person.ScreenName2;
+                        break;
+                    case "3":
+                        _person.Email = _person.ScreenName3;
+                        break;
+                    default:
+                        _person.Email = choice;
+                        break;
                 }
-            } while (String.IsNullOrEmpty(choice));
+            } while (IsNullOrEmpty(choice));
 
         }
         #endregion
@@ -129,9 +127,9 @@ namespace Exercise1
         private void Search()
         {
             Console.Write("Search : ");
-            string search = Console.ReadLine().ToString();
+            var search = Console.ReadLine()?.ToString();
 
-            var results = personList.Where(x => x.FirstName.ToLower().Contains(search.ToLower()) || x.LastName.ToLower().Contains(search.ToLower()));
+            var results = personList.Where(x => search != null && (x.FirstName.ToLower().Contains(search.ToLower()) || x.LastName.ToLower().Contains(search.ToLower())));
 
             Console.WriteLine("{0} || {1} || {2} || {3} || {4} || {5}", "ID", "First Name", "Last Name", "Email", "Date of Birth", "Sun Sign");
             if (search != "")

@@ -11,8 +11,8 @@ namespace Exercise1
 {
     public class Program
     {
-        List<Person> personList = new List<Person>();
-        public Person _person;
+        readonly List<Person> _personList = new List<Person>();
+        private Person _person;
 
         private static void Main(string[] args)
         {
@@ -44,7 +44,7 @@ namespace Exercise1
                 Console.WriteLine("1 --- Add");
                 Console.WriteLine("2 --- Search");
                 var option = int.Parse(Console.ReadLine()?.ToString() ?? throw new InvalidOperationException());
-
+                
                 Console.WriteLine();
                 switch (option)
                 {
@@ -109,16 +109,16 @@ namespace Exercise1
             _person.FirstName = (string)Console.ReadLine();
 
             Console.Write("Last Name : ");
-            _person.LastName = (string)Console.ReadLine().ToString();
+            _person.LastName = (string)Console.ReadLine()?.ToString();
             
             Console.Write("Date Of Birth : ");
-            _person.DateOfBirth = DateTime.Parse(Console.ReadLine().ToString());
+            _person.DateOfBirth = DateTime.Parse(Console.ReadLine()?.ToString());
 
             GenerateEmail();
             
-            _person.Id = personList.Count + 1;
+            _person.Id = _personList.Count + 1;
 
-            personList.Add(_person);
+            _personList.Add(_person);
 
         }
         #endregion
@@ -129,7 +129,7 @@ namespace Exercise1
             Console.Write("Search : ");
             var search = Console.ReadLine()?.ToString();
 
-            var results = personList.Where(x => search != null && (x.FirstName.ToLower().Contains(search.ToLower()) || x.LastName.ToLower().Contains(search.ToLower())));
+            var results = _personList.Where(x => search != null && (x.FirstName.ToLower().Contains(search.ToLower()) || x.LastName.ToLower().Contains(search.ToLower())));
 
             Console.WriteLine("{0} || {1} || {2} || {3} || {4} || {5}", "ID", "First Name", "Last Name", "Email", "Date of Birth", "Sun Sign");
             if (search != "")
@@ -141,7 +141,7 @@ namespace Exercise1
             }
             else
             {
-                foreach (var item in personList)
+                foreach (var item in _personList)
                 {
                     Console.WriteLine("{0} || {1} || {2} || {3} || {4} || {5}", item.Id, item.FirstName, item.LastName, item.Email, item.DateOfBirth, new SunSign().ZodiacSign);
                 }

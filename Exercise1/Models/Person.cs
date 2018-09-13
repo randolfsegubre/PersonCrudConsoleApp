@@ -17,19 +17,19 @@ namespace Exercise1.Models
             Email = "";
             DateOfBirth = DateTime.Now;
         }
-        public Person(string _firstName, string _lastName, string _email)
+        public Person(string firstName, string lastName, string email)
         {
             Id = 0;
-            FirstName = _firstName;
-            LastName = _lastName;
-            Email = _email;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
         }
-        public Person(string _firstName, string _lastName, DateTime _dateOfBirth)
+        public Person(string firstName, string _lastName, DateTime dateOfBirth)
         {
             Id = 0;
-            FirstName = _firstName;
+            FirstName = firstName;
             LastName = _lastName;
-            DateOfBirth = _dateOfBirth;
+            DateOfBirth = dateOfBirth;
         }
         public int Id { get; set; }
         public string FirstName { get; set; }
